@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0">
+
+	<cm:property-placeholder persistent-id="com.sncf.pscs.testing.http"
+		update-strategy="reload" />
+
+	<bean id="httpService" class="com.sncf.pscs.testing.http.service.HttpService">
+		<argument value="${http.root.dir}"/>
+	</bean>
+
+	<service ref="httpService" interface="com.sncf.pscs.testing.http.api.Http" />
+
+</blueprint>

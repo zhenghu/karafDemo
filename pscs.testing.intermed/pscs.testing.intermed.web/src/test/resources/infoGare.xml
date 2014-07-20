@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reponse>
+	<entete />
+	<message>
+		<gare>87391003</gare>
+		<listeTrain>
+			<train>
+				<numTrain>8590</numTrain>
+				<date>2013-09-25T14:28:00+02:00</date>
+				<origDest />
+				<libelle>TARBES</libelle>
+				<marque>TGV</marque>
+				<voie>7</voie>
+				<retard>20</retard>
+			</train>
+			<train>
+				<numTrain>2959</numTrain>
+				<date>2013-09-25T15:28:00+02:00</date>
+				<origDest>87611004</origDest>
+				<libelle />
+				<marque>IdTGV</marque>
+				<voie>2</voie>
+				<retard>10</retard>
+			</train>
+		</listeTrain>
+		<listeInfoConjoncturelle />
+	</message>
+</reponse>

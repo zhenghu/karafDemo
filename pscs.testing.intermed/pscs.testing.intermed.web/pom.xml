@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sncf.pscs</groupId>
+		<artifactId>pscs.testing.intermed</artifactId>
+		<version>1.10.0</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>pscs.testing.intermed.web</artifactId>
+	<packaging>bundle</packaging>
+	<name>pscs.testing.intermed.web Bundle</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Export-Package>
+							pscs.testing.intermed.web*;version=${project.version}
+						</Export-Package>
+						<Import-Package>
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<id>infoGare</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<generatePackage>pscs.testing.intermed.infogare</generatePackage>
+							<schemaIncludes>
+								<schemaInclude>infoGare_V5.2.xsd</schemaInclude>
+							</schemaIncludes>
+							<generateDirectory>${basedir}/target/generated-sources/jaxb</generateDirectory>
+							<removeOldOutput>false</removeOldOutput>
+							<args>
+								<arg>-extension</arg>
+							</args>
+						</configuration>
+					</execution>
+
+				</executions>
+				<configuration>
+					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-assert-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>xmlunit</groupId>
+			<artifactId>xmlunit</artifactId>
+		</dependency>
+	</dependencies>
+</project>

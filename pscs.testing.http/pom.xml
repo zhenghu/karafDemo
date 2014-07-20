@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+	<parent>
+		<groupId>com.sncf.pscs</groupId>
+		<artifactId>pscs.testing</artifactId>
+		<version>1.10.0</version>
+	</parent>
+	
+    <artifactId>pscs.testing.http</artifactId>
+    <packaging>pom</packaging>
+	<name>PSCS Testing HTTP</name>
+	
+	<modules>
+		<module>pscs.testing.http.api</module>
+		<module>pscs.testing.http.service</module>
+		<module>pscs.testing.http.web</module>
+	</modules>
+	
+</project>

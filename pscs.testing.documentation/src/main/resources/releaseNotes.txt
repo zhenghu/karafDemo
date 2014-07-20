@@ -1,0 +1,30 @@
+Ce fichier permet de noter et suivre les évolutions / corrections de l'application au fil des livraisons.
+---------------------------------------   1.9.0 ---------------------------------------
+- Modification du web service pour MessagingService de WCA
+- Portage du simulateur Tempo (en SSL)
+
+---------------------------------------   1.8.0 ---------------------------------------
+- Ajout d'un simulateur T2G 
+
+---------------------------------------   1.6.0 ---------------------------------------
+- Ajout d'un simulateur SIVE-NG (Gestion des correspondances)
+- Ajout d'un simulateur INTERMED (Gestion des correspondances)
+
+---------------------------------------   1.5.0 ---------------------------------------
+- Ajout d'un service http pour gérer l'upload / le download de fichiers et ainsi simuler un serveur HTTP servant des fichiers.
+- Les répertoires dans lesquels sont stockés les message SIP et WSN reçus par les bouchons sont désormais configurables via un fichier de configuration (un distinct par bouchon).
+
+---------------------------------------   OSGI 2.5.0 - Release Catalan ---------------------------------------
+*** PSCS Testing : Evolutions/Modifications ***
+- Création d'un consommateur de messages WSN.
+
+---------------------------------------   OSGI 2.5.0 - Release Catalan ---------------------------------------
+*** PSCS Testing : Evolutions/Modifications ***
+- Création d'un consommateur de messages WSN.
+
+---------------------------------------   OSGI 2.4.0 - Release Mont-Cenis ---------------------------------------
+*** PSCS Testing : Evolutions/Modifications ***
+- Création d'un projet PSCS Testing pour interagir avec la PSCS en émettant / consommant des messages de différente nature
+- Création d'un injecteur de messages MQ
+- Création d'un consommateur de messages MQ
+- Création d'un injecteur de messages SIP

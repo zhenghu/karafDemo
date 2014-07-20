@@ -1,0 +1,196 @@
+<reponse>
+   <entete/>
+   <message>
+      <gare>87481002</gare>
+      <listeTrain>
+         <train>
+            <numTrain>47601</numTrain>
+            <date>2013-12-10T14:35:00+01:00</date>
+            <origDest/>
+            <libelle>NOIRMOUTIER</libelle>
+            <marque>BUS</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>859821</numTrain>
+            <date>2013-12-10T14:37:00+01:00</date>
+            <origDest/>
+            <libelle>LES SABLES</libelle>
+            <marque>TER</marque>
+            <voie>7</voie>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>860005</numTrain>
+            <date>2013-12-10T14:38:00+01:00</date>
+            <origDest/>
+            <libelle>ST NAZAIRE</libelle>
+            <marque>TER</marque>
+            <voie/>
+            <retard>20</retard>
+         </train>
+         <train>
+            <numTrain>47953</numTrain>
+            <date>2013-12-10T14:40:00+01:00</date>
+            <origDest/>
+            <libelle>STJ MONTS</libelle>
+            <marque>BUS</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>858147</numTrain>
+            <date>2013-12-10T14:41:00+01:00</date>
+            <origDest/>
+            <libelle>VERTOU</libelle>
+            <marque>TER</marque>
+            <voie>8</voie>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>5328</numTrain>
+            <date>2013-12-10T14:43:00+01:00</date>
+            <origDest/>
+            <libelle>LYON PERRACH</libelle>
+            <marque>TGV</marque>
+            <voie>1</voie>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>858367</numTrain>
+            <date>2013-12-10T14:45:00+01:00</date>
+            <origDest/>
+            <libelle>RENNES</libelle>
+            <marque>TER</marque>
+            <voie>6</voie>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>8842</numTrain>
+            <date>2013-12-10T14:49:00+01:00</date>
+            <origDest/>
+            <libelle>PARIS MP</libelle>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>8942</numTrain>
+            <date>2013-12-10T14:49:00+01:00</date>
+            <origDest/>
+            <libelle>PARIS MP</libelle>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>8929</numTrain>
+            <date>2013-12-10T15:03:00+01:00</date>
+            <origDest/>
+            <libelle>LE CROISIC</libelle>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>860005</numTrain>
+            <date>2013-12-10T14:38:00+01:00</date>
+            <origDest>87481705</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard>34</retard>
+         </train>
+         <train>
+            <numTrain>8929</numTrain>
+            <date>2013-12-10T15:03:00+01:00</date>
+            <origDest>87481788</origDest>
+            <libelle/>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>857368</numTrain>
+            <date>2013-12-10T15:05:00+01:00</date>
+            <origDest>87396002</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>13895</numTrain>
+            <date>2013-12-10T15:20:00+01:00</date>
+            <origDest>87474098</origDest>
+            <libelle/>
+            <marque>Corail Intercité</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>5278</numTrain>
+            <date>2013-12-10T15:25:00+01:00</date>
+            <origDest>87286005</origDest>
+            <libelle/>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>8848</numTrain>
+            <date>2013-12-10T15:49:00+01:00</date>
+            <origDest>87391003</origDest>
+            <libelle/>
+            <marque>TGV</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>859719</numTrain>
+            <date>2013-12-10T15:57:00+01:00</date>
+            <origDest>87481440</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>858365</numTrain>
+            <date>2013-12-10T16:02:00+01:00</date>
+            <origDest>87471003</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>860112</numTrain>
+            <date>2013-12-10T16:07:00+01:00</date>
+            <origDest>87571000</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard/>
+         </train>
+         <train>
+            <numTrain>858211</numTrain>
+            <date>2013-12-10T16:20:00+01:00</date>
+            <origDest>87474098</origDest>
+            <libelle/>
+            <marque>Train TER</marque>
+            <voie/>
+            <retard/>
+         </train>
+      </listeTrain>
+      <listeInfoConjoncturelle>
+         <infoConjoncturelle>
+            <message>14 DECEMBRE 2013 TRAVAUX POUR LA FUTURE LIGNE A GRANDE VITESSE CIRCULATION INTERROMPUE ENTRE SABLE ET LE MANS</message>
+         </infoConjoncturelle>
+         <infoConjoncturelle>
+            <message>PLAN DE TRANSPORT ADAPTE INFORMATIONS SUR LE SITE INTERNET DE LA SNCF ET SUR L'AFFICHAGE EN GARE.</message>
+         </infoConjoncturelle>
+      </listeInfoConjoncturelle>
+   </message>
+</reponse>

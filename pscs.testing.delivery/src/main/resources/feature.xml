@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="RepoPSCS">
+	
+	<feature name="pscs-http">
+		<bundle>mvn:com.sncf.pscs/pscs.testing.http.api/${parent.version}</bundle>
+		<bundle>mvn:com.sncf.pscs/pscs.testing.http.service/${parent.version}</bundle>
+		<bundle>mvn:com.sncf.pscs/pscs.testing.http.web/${parent.version}</bundle>
+	</feature>
+	
+	<feature name="pscs-intermed">
+		<bundle>mvn:com.sncf.pscs/pscs.testing.intermed.web/${parent.version}</bundle>
+		<bundle>mvn:commons-codec/commons-codec/1.9</bundle>
+	</feature>
+	
+	<feature name="pscs-testing">
+		<feature version="2.7.5">cxf-jaxrs</feature>
+		<feature version="2.7.5">cxf-jaxws</feature>
+		<feature version="2.7.5">cxf-http-jetty</feature>
+		<feature version="2.7.5">cxf-wsn-api</feature>
+
+		
+		<feature>pscs-http</feature>
+		<feature>pscs-intermed</feature>
+		
+		<bundle>mvn:com.sncf.pscs/pscs.testing.documentation/${parent.version}</bundle>
+	</feature>
+	
+</features>

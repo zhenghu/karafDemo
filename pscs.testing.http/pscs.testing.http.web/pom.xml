@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.sncf.pscs</groupId>
+		<artifactId>pscs.testing.http</artifactId>
+		<version>1.10.0</version>
+	</parent>
+
+	<artifactId>pscs.testing.http.web</artifactId>
+	<packaging>bundle</packaging>
+	<name>pscs.testing.http.web Bundle</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sncf.pscs</groupId>
+			<artifactId>pscs.testing.http.api</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		</dependency>
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-assert-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Export-Package />
+						<Import-Package>
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

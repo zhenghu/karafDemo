@@ -1,0 +1,500 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<div class="main">
+			<h1>PSCS Testing : Description des services disponibles</h1>
+			Les services REST / SOAP suivants permettent d'émettre ou de consommer des messages selon différents formats, depuis ou vers les plateformes indiquées. La liste de ces services est disponible <a href="/cxf/">ici</a>, et détaillée ci-dessous.
+			Modification pour démo
+			
+			<div class="chapter">
+				<h2>Echanges SIP</h2>
+				<div class="chapter-content">
+					<h3><a href="/cxf/injectsip?_wadl">Injecteur SIP</a></h3>
+					<p>Permet d'émettre un message SIP vers la plateforme indiquée.</p>
+					<h3><a href="/cxf/sip/consumer?_wadl">Consommateur SIP</a></h3>
+					<p>Permet de s'enregistrer auprès d'un bouchon SIP, et de récupérer un fichier CSV contenant tous les messages recus.</p>
+					<p>L'utilisation se fait en trois temps, via 3 types de requêtes :
+						<ul>
+							<li>Inscription auprès du bouchon</li>
+							<li>Récupération de tous les messages stockés via un fichier csv</li>
+							<li>Désinscription</li>
+						</ul>
+						Tous les messages reçus sont stockés dans un fichier au format CSV. C'est le fichier qui est renvoyé lors de la demande des messages. Il sera supprimé à la désinscription.
+					</p>
+					<div class="exemple">
+						<h4>Inscription</h4>
+						<p>L'inscription se fait en spécifiant le client ID (un identifiant unique pour la session).</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/consumer/{clientId}<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Inscription sur un port spécifique</h4>
+						<p>L'inscription sur un port spécifique se fait en spécifiant le client ID (un identifiant unique pour la session) et le port.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/consumer/{clientId}/{port}<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Récupération des messages</h4>
+						<p>La récupération des messages se fait en spécifiant le client ID dans l'URL de requête. La méthode renvoie un fichier de type CSV.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/consumer/{clientId}<br/>
+						Méthode : GET<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Désinscription</h4>
+						<p>La désinscription se fait en spécifiant le client ID dans l'URL de la requête. La méthode provoque la désinscription auprès du bouchon ainsi que la suppression du fichier CSV contenant les messages reçus.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/consumer/{clientId}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Echanges MQ</h2>
+				<div class="chapter-content">
+					<h3><a href=" /cxf/mq/injecter?_wadl">Injecteur MQ</a></h3>
+					<p>Permet d'émettre un message MQ vers la plateforme indiquée.</p>
+					<h3><a href=" /cxf/mq/consumer?_wadl">Consommateur MQ</a></h3>
+					<p>Permet de consommer un message MQ sur la plateforme indiquée.</p>
+				</div>
+			</div>
+			
+			
+			<div class="chapter">
+				<h2>Echanges JORAM</h2>
+				<div class="chapter-content">
+					<h3><a href=" /cxf/joram/injecter?_wadl">Injecteur Joram</a></h3>
+					<p>Permet d'émettre un message JORAM vers la plateforme indiquée.</p>
+					<p>Exemple: http://localhost:8181/cxf/joram/injecter/QUEUE/pscs3wps/16420/agc.CAS_PSCS_QUEUE/agc.sfQCnxFactory?property=veh:B81519</p>
+				</div>
+			</div>
+
+			<div class="chapter">
+				<h2>Echanges WSN</h2>
+				<div class="chapter-content">
+					<h3><a href=" /cxf/wsn/consumer?_wadl">Consommateur WSN</a></h3>
+					<p>Permet de s'enregistrer auprès d'un broker WSN, et d'être notifié des différents messages reçus sur le topic choisi.</p>
+					<p>L'utilisation se fait en trois temps, via 3 types de requêtes :
+						<ul>
+							<li>Inscription auprès du broker</li>
+							<li>Récupération des messages reçus</li>
+							<li>Désinscription</li>
+						</ul>
+						Tous les messages reçus sont stockés dans un fichier au format CSV. C'est ce fichier qui est renvoyé lors de la demande des messages. Il sera supprimé à la désinscription.
+					</p>
+					<div class="exemple">
+						<h4>Inscription</h4>
+						<p>L'inscription se fait en spécifiant le client ID (un identifiant unique pour la session), les 2 adresses pour réaliser l'inscription et la désinscription, ainsi que les informations relatives au topic. Le client ID sera réuttilisé par les autrse requêtes.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/wsn/consumer<br/>
+						Méthode : PUT<br/>
+						Contenu :<br/>
+						{<br/>
+						"clientId" : "poster",<br/>
+						"notificationBrokerAddress" : "http://pscswas4:9080/WSNService1WSNServicePt1NB/Service",<br/>
+						"subscriptionManagerAddress" : "http://pscswas4:9080/WSNService1WSNServicePt1SM/Service",<br/>
+						"topicNamespacePrefix" : "BREHAT",<br/>
+						"topic" : "pscs"<br/>
+						}<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Récupération des messages</h4>
+						<p>La récupération des messages se fait en spécifiant le client ID dans l'URL de requête. La méthode renvoie un fichier au format CSV.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/wsn/consumer/{clientId}<br/>
+						Méthode : GET<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Désinscription</h4>
+						<p>La désinscription se fait en spécifiant le client ID dans l'URL de la requête. La méthode provoque la désinscription auprès du broker ainsi que la suppression du fichier CSV contenant les messages reçus.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/wsn/consumer/{clientId}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Echanges de fichiers via HTTP</h2>
+				<div class="chapter-content">
+					<h3><a href="/cxf/http?_wadl">Echanges de fichiers</a></h3>
+					<p>Permet de déposer un fichier sur le serveur HTTP, de le récupérer et de l'effacer.</p>
+					<p>Les 3 opérations suivantes sont disponibles :
+						<ul>
+							<li>Déposer un fichier sur le serveur HTTP pour qu'il soit disponible et téléchargeable par tous</li>
+							<li>Récupérer un fichier précédemment mis à disposition via la première opération</li>
+							<li>Supprimer un fichier précédemment mis à disposition par la première opération</li>
+						</ul>
+					</p>
+					<div class="exemple">
+						<h4>Dépôt de fichier</h4>
+						<p>Le dépôt de fichier se fait en spécificant le nom du fichier sous lequel on souhaite rendre le contenu disponible ({fileName}), et le contenu de ce fichier (sous forme binaire).</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/http/{fileName}<br/>
+						Contenu : Fichier à uploader<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Récupération de fichier</h4>
+						<p>La récupération de fichier se fait via une simple requête en spécifiant le nom du fichier ({fileName}) à récupérer.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/http/{fileName}<br/>
+						Méthode : GET<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Suppresion de fichier</h4>
+						<p>La suppression de fichier se fait via une simple requête en spécifiant le nom du fichier ({fileName}) à supprimer.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/sip/http/{fileName}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Simulator Intermed</h2>
+				<div class="chapter-content">
+					<h3><a href="/cxf/tempo/gare/horaires?_wadl">Simulator Intermed</a></h3>
+					<p>Permet de récupérer un exemple du fichier correspodances, de l'envoyer par le request.</p>
+					<p>Les 2 opérations suivantes sont disponibles :
+						<ul>
+							<li>Récupérer un exemple du fichier correspondances.</li>
+							<li>Envoyer le fichier récupéré pour le client qui demande les correspondances.</li>
+						</ul>
+					</p>
+					<div class="exemple">
+						<h4>Récupérer de fichier</h4>
+						<p>La récupération du fichier se fait par le service path /example. Le type de fichier est application/xml</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/tempo/gare/horaires/example<br/>
+						Contenu : Fichier à uploader<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Envoyer le fichier</h4>
+						<p>L'envoie du fichier se fait via une requête en spécifiant des parametres.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/tempo/gare/horaires/[codeGare]?user=[user]&app=[app]&version=[version]&dateGare=[dateGare]&numTrain=[numTrain]&sens=[sens]&informationConjoncturelle=[informationConjoncturelle]<br/>
+						Contenu : http://localhost:8181/cxf/tempo/gare/horaires/87484006?app=SGV&user=UsrTest&version=1.0.0.0&sens=DEPART&dateGare=2011-06-17T07:57:28.387Z&informationConjoncturelle=true
+						Méthode : GET<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Simulateur SIVE-NG</h2>
+				<div class="chapter-content">
+					<h3><a href="/cxf/BoardConnectionsService?wsdl">Simulateur du service SOAP BoardConnections</a></h3>
+					<p>Simule le service BoardConnections. Stocke les données de correspondance reçues (accessibles via le service REST décrit ci-dessous).</p>
+				</div>
+				
+				<div class="chapter-content">
+					<h3><a href="/cxf/siveng/boardConnections?_wadl">Interface du simulateur du service BoardConnections</a></h3>
+					<p>Permet d'enregistrer des clients qui stockeront les données de correspondance reçues via le web service SOAP.</p>
+					<p>Les 3 opérations suivantes sont disponibles :
+						<ul>
+							<li>Enregistrement d'un client.</li>
+							<li>Récupération de toutes les données de correspondances reçues par le client depuis sa création.</li>
+							<li>Désinscription d'un client.</li>
+						</ul>
+					</p>
+					<div class="exemple">
+						<h4>Enregistrer un client</h4>
+						<p>L'enregistrement d'un client se fait via une simple requête en précisant un identifiant de client ({clientId})</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/siveng/boardConnections/{clientId}<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Récupérer les correspondances d'un client</h4>
+						<p>La récupération se fait via une simple requête en précisant l'identifiant du client({clientId}). Le retour est une chaîne contenant toutes les correspondances, ligne par ligne.</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/siveng/boardConnections/{clientId}<br/>
+						Méthode : GET<br/>
+						Retour : Chaîne concaténant toutes les correspondances<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Désinscrire un client</h4>
+						<p>La désinscription d'un client se fait via une simple requête en précisant un identifiant de client ({clientId})</p>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/siveng/boardConnections/{clientId}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Simulateur T2G</h2>
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/Identification?wsdl">Simulateur T2G du service Identification</a></h3>
+					<p>Simule le service Identification de T2G. Les méthodes implémentées sont : login et enumSystems</p>
+				</div>
+				
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/Transfert?wsdl">Simulateur T2G du service Transfert</a></h3>
+					<p>Simule le service Transfert de T2G. Les méthodes implémentées sont : createUploadFolder, createTransferTask et startTransfer</p>
+				</div>
+				
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/session?_wadl">Configuration des sessions T2G</a></h3>
+					<p>Permet de configurer les sessions T2G</p>
+					<p>Les 2 opérations suivantes sont disponibles :
+						<ul>
+							<li>Création d'une session de sessionId pour le login/pwd</li>
+							<li>Suppression de la session de sessionId</li>
+						</ul>
+					</p>
+					<div class="exemple">
+						<h4>Création d'une session</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/session/{login}/{password}/{clientId}<br/>
+						Méthode : PUT<br/>
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>Supression d'une session</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/session/{clientId}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+			
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/trains?_wadl">Configuration de la liste des trains retournée pour une session</a></h3>
+					<p>Permet de configurer la liste des trains pour une session. La liste des trains est passé dans le body sous la forme d'un XML se basant sur la reponse transmise par le webservice soap enumSystems</p>
+					<div class="exemple">
+						<h4>Configuration de la liste des train pour une session</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/trains/{clientId}<br/>
+						Méthode : PUT<br/>
+						Body exemple : 
+						<xmp><?xml version="1.0"?>
+<enumSystemsResponse xmlns="http://alstom.com/T2G/Identification">
+	<systemList>
+		<item>
+			<systemId>TRAIN-1</systemId>
+			<vehiclePhysicalId>1</vehiclePhysicalId>
+			<missionId>TER-86015-18022013</missionId>
+			<communicationLink>2G3G</communicationLink>
+			<status>0</status>
+			<isOnline>true</isOnline>
+		</item>
+		<item>
+			<systemId>TRAIN-2</systemId>
+			<vehiclePhysicalId>2</vehiclePhysicalId>
+			<missionId>TER-86015-18022013</missionId>
+			<communicationLink>2G3G</communicationLink>
+			<status>0</status>
+			<isOnline>true</isOnline>
+		</item>
+	</systemList>
+</enumSystemsResponse></xmp> 
+						</p>
+					</div>
+				</div>
+			
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/uploadfolder?_wadl">Configuration du simulateur T2G pour la création d'un répertoire d'upload.</a></h3>
+					<p>Permet de Configurer le simulateur T2G pour la création d'un répertoire d'upload. Les paramétres sont passé dans le body sous la forme d'un XML</p>
+					<p>Les 2 opérations suivantes sont disponibles :
+						<ul>
+							<li>Configuration de la création du répertoire d'upload</li>
+							<li>suppression du répertoire d'upload créé</li>
+						</ul>
+					</p>
+
+					<div class="exemple">
+						<h4>Configuration de la création du répertoire d'upload</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/uploadFolder/{clientId}<br/>
+						Méthode : PUT<br/>
+						Body exemple : <xmp>
+<uploadFolder>
+	<folderId>83</folderId>
+	<ftpServerIP>10.149.56.100</ftpServerIP>
+	<ftpPortNumber>21</ftpPortNumber>
+	<ftpUserName>T2G</ftpUserName>
+	<ftpPassword>admin</ftpPassword>
+	<ftpUploadDirectory>upload\0\83</ftpUploadDirectory>
+</uploadFolder></xmp>
+						
+						
+						</p>
+					</div>
+					<div class="exemple">
+						<h4>suppression du répertoire d'upload créé</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/uploadFolder/{clientId}<br/>
+						Méthode : DELETE<br/>
+						</p>
+					</div>
+				</div>
+				<div class="chapter-content">
+					<h3><a href="/cxf/t2g/uploaded?_wadl">Verifie que le simu T2G a reçu une demande de démarrage de tache de transfert pour une session.</a></h3>
+					<p>Valide que la tache de transfert a bien été appelée pour la session passé en paramétre. Retourne true dans le body, si c'est vrai, false sinon.</p>
+					<div class="exemple">
+						<h4>Verification de l'appel a run task transfert</h4>
+						<p class="code">
+						Requête : http://localhost:8181/cxf/t2g/uploaded/{clientId}<br/>
+						Méthode : GET<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Simulateur tempo</h2>
+				<div class="chapter-content">
+					<p>Permet de recevoir les réservations pour un train donné.</p>
+					
+					<div class="chapter-content">
+						<h3><a href="/tempo/train/agencement/SimuTempo">Réception d'un fichier de réservation par défaut</a></h3>
+						<p>Retourne un fichier de réservations par défaut, non configurable.</p>
+						<div class="exemple">
+							<h4>Réception d'un fichier par défaut</h4>
+							<p class="code">
+							Requête : http://localhost:8181/tempo/train/agencement/SimuTempo<br/>
+							Méthode : GET<br/>
+							</p>
+						</div>
+					</div>
+					
+					<div class="chapter-content">
+						<h3><a href="/tempo/train/agencement/SimuTempo">Réception d'un fichier de réservation spécifique</a></h3>
+						<p>Retourne un fichier de réservations configuré via le fichier de configuration (voir la partie configuration en bas de page pour voir quels paramètres sont configurables).</p>
+						<div class="exemple">
+							<h4>Réception d'un fichier configuré</h4>
+							<p class="code">
+							Requête : http://localhost:8181/tempo/train/agencement/SimuTempo?numeroTrain={numeroTrain}&user={user}&app={app}&version={version}&date={date}&origine={origine}&destination={destination}&rame={rame}<br/>
+							Méthode : GET<br/>
+							Détail des paramètres (voir la documentation tempo pour la portée fonctionnelle) :</p>
+							<ul class="code">
+								<li>numeroTrain : 4 à 6 chiffres</li>
+								<li>user : pas de contrainte de format</li>
+								<li>app : pas de contrainte de format</li>
+								<li>version : pas de contrainte de format</li>
+								<li>date : la date suivant le pattern [0-9]{4}-[0-9]{2}-[0-9]{2}</li>
+								<li>origine : 8 chiffres</li>
+								<li>destination : 8 chiffres</li>
+								<li>rame : 1 chiffre</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chapter">
+				<h2>Simulateur WCA</h2>
+				<div class="chapter-content">
+					<p>Cet outil permet de simuler les interactions entre WCA et la PSCS</p>
+					
+					<div class="chapter-content">
+						<h3><a href="/cxf/wca?_wadl">Envoi d'un fichier de diagnostic de WCA vers la PSCS</a></h3>
+						<p>Simule l'envoi d'un fichier de diagnostic, comme provenant de WCA, vers la PSCS. Il s'agit d'un service REST.</p>
+						<div class="exemple">
+							<h4>Envoi d'un fichier de diagnostic</h4>
+							<p class="code">
+							Requête : http://localhost:8181/cxf/wca/pscswas4/fichierDiagnostic.oti.gz<br/>
+							Méthode : PUT<br/>
+							Body : Contenu du fichier de diagnostic<br/>
+							</p>
+						</div>
+					</div>
+					<div class="chapter-content">
+						<h3><a href="/cxf/FileRepository?wsdl">Mise à disposition d'un fichier de diagnostic par WCA</a></h3>
+						<p>Permet de récupérer un fichier de diagnostic préalablement enregistré dans WCA (cf méthode précédente). Il s'agit d'un service SOAP. La méthode utilisée est la méthode <span class="code">getFile</span>.</p>
+						<div class="exemple">
+							<h4>Récupération d'un fichier de diagnostic</h4>
+							<p class="code">
+							Requête : http://localhost:8181/cxf/FileRepository<br/>
+							Méthode : POST<br/>
+							Body :<br/>
+							<xmp><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:fil="http://Bombardier/Transport/Orbiflo/Common/FileRepository/">
+   <soap:Header/>
+   <soap:Body>
+      <fil:GetFile>
+         <fil:FileDataTransferSize>1</fil:FileDataTransferSize>
+         <fil:FullFilename>fichierDiagnostic.oti.gz</fil:FullFilename>
+         <fil:Offset>0</fil:Offset>
+      </fil:GetFile>
+   </soap:Body>
+</soap:Envelope></xmp>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="configuration">
+				<h2>Configuration</h2>
+				<div class="configuration-content">
+					<p>Certains injecteurs / bouchons exposent quelques paramètres configurables. Les fichiers de configuration sont disponibles dans le répertoire d'installation de karaf, dans le dossier <b>etc</b>.</p>
+					<div class="configuration-section">
+						<h3>Configuration de l'injecteur SIP</h3>
+						La configuration de l'injecteur SIP se fait dans le fichier <span class="code">com.sncf.pscs.testing.sip.cfg</span>. Les clefs configurables sont :
+						<ul>
+							<li>sip.application : service simulé par l'injecteur (ex : CCEU).</li>
+							<li>sip.port : port local sur lequel sont reçus les réponses.</li>
+						</ul>
+					</div>
+					<div class="configuration-section">
+						<h3>Configuration du consommateur SIP</h3>
+						La configuration du consommateur SIP se fait dans le fichier <span class="code">com.sncf.pscs.testing.consumer.sip.cfg</span>. Les clefs configurables sont :
+						<ul>
+							<li>sip.messages.dir : répertoire dans lequel sont stockés les fichiers contenant les messages SIP reçus.</li>
+						</ul>
+					</div>
+					<div class="configuration-section">
+						<h3>Configuration du consommateur WSN</h3>
+						La configuration du consommateur WSN se fait dans le fichier <span class="code">com.sncf.pscs.testing.wsn.cfg</span>. Les clefs configurables sont :
+						<ul>
+							<li>wsn.messages.dir : répertoire dans lequel sont stockés les fichiers contenant les messages WSN reçus.</li>
+						</ul>
+					</div>
+					<div class="configuration-section">
+						<h3>Configuration du serveur de fichiers HTTP</h3>
+						La configuration du serveur de fichiers HTTP se fait dans le fichier <span class="code">com.sncf.pscs.testing.http.cfg</span>. Les clefs configurables sont :
+						<ul>
+							<li>http.root.dir : répertoire dans lequel sont stockés les fichiers contenant les fichiers reçus et servis.</li>
+						</ul>
+					</div>
+					<div class="configuration-section">
+						<h3>Configuration du simulateur tempo</h3>
+						La configuration du simulateur tempo se fait dans ce fichier <span class="code">tempo.cfg</span>. Les clefs configurables sont :
+						<ul>
+							<li>Secured : indique si l'accès doit se faire en http ou en https.</li>
+							<li>Login : le login à utiliser si le service est en mode sécurisé.</li>
+							<li>Password : le mot de passe à utiliser si le service est en mode sécurisé.</li>
+							<li>[Numéro de train] : un numéro de train, libre, qui indique le chemin complet absolu vers le fichier à délivrer lors de l'appel au simulateur pour ce train. Cette configuration est répétable pour autant de trains que nécessaire.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="releasenote">
+			<a href="releaseNotes.txt">Release Notes</a>
+		</div>
+	</body>
+</html>
